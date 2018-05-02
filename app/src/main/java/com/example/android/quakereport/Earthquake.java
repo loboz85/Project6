@@ -1,56 +1,78 @@
+/*
+ * Copyright (C) 2016 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.android.quakereport;
 
 /**
- * Created by loboz on 23.04.2018.
+ * An {@link Earthquake} object contains information related to a single earthquake.
  */
-
-/**
- * {@link Earthquake} represents an info for the single eq
- */
-
 public class Earthquake {
-    /** Eq magnitude*/
-    private String mMagnitude;
 
-    /** Eq location */
+    /** Magnitude of the earthquake */
+    private double mMagnitude;
+
+    /** Location of the earthquake */
     private String mLocation;
 
-    /** Audio resource ID for the word */
+    /** Time of the earthquake */
     private long mTimeInMilliseconds;
+
+    /** Website URL of the earthquake */
+    private String mUrl;
 
     /**
      * Constructs a new {@link Earthquake} object.
      *
      * @param magnitude is the magnitude (size) of the earthquake
-     * @param location is the city location of the earthquake
+     * @param location is the location where the earthquake happened
      * @param timeInMilliseconds is the time in milliseconds (from the Epoch) when the
-     *  earthquake happened
+     *                           earthquake happened
+     * @param url is the website URL to find more details about the earthquake
      */
-    public Earthquake(String magnitude, String location, long timeInMilliseconds) {
+    public Earthquake(double magnitude, String location, long timeInMilliseconds, String url) {
         mMagnitude = magnitude;
         mLocation = location;
         mTimeInMilliseconds = timeInMilliseconds;
+        mUrl = url;
     }
 
     /**
-     * Get the eq magnitude
+     * Returns the magnitude of the earthquake.
      */
-    public String getMagnitude() {
+    public double getMagnitude() {
         return mMagnitude;
     }
 
     /**
-     * Get the eq location
+     * Returns the location of the earthquake.
      */
     public String getLocation() {
         return mLocation;
     }
-
 
     /**
      * Returns the time of the earthquake.
      */
     public long getTimeInMilliseconds() {
         return mTimeInMilliseconds;
+    }
+
+    /**
+     * Returns the website URL to find more information about the earthquake.
+     */
+    public String getUrl() {
+        return mUrl;
     }
 }
