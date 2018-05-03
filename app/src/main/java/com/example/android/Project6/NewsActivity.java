@@ -25,7 +25,6 @@ import android.widget.ListView;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Loader;
-import android.widget.TextView;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -33,10 +32,10 @@ import android.net.NetworkInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EarthquakeActivity extends AppCompatActivity implements LoaderCallbacks<List<Earthquake>> {
+public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<List<News>> {
 
 
-    private static final String LOG_TAG = EarthquakeActivity.class.getName();
+    private static final String LOG_TAG = NewsActivity.class.getName();
 
     //URL for earthquake data from the USGS dataset
     private static final String USGS_REQUEST_URL =
@@ -49,7 +48,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
     private static final int EARTHQUAKE_LOADER_ID = 1;
 
     /** Adapter for the list of earthquakes */
-    private EarthquakeAdapter mAdapter;
+    private NewsAdapter mAdapter;
 
 //    /** TextView that is displayed when the list is empty */
 //    private TextView mEmptyStateTextView;
@@ -66,7 +65,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 //        earthquakeListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of earthquakes as input
-        mAdapter = new EarthquakeAdapter(this, new ArrayList<Earthquake>());
+        mAdapter = new NewsAdapter(this, new ArrayList<News>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
@@ -78,7 +77,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Find the current earthquake that was clicked on
-                Earthquake currentEarthquake = mAdapter.getItem(position);
+                News currentEarthquake = mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri earthquakeUri = Uri.parse(currentEarthquake.getUrl());
@@ -121,13 +120,13 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
     }
 
     @Override
-    public Loader<List<Earthquake>> onCreateLoader(int i, Bundle bundle) {
+    public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new EarthquakeLoader(this, USGS_REQUEST_URL);
+        return new NewsLoader(this, USGS_REQUEST_URL);
     }
 
     @Override
-    public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
+    public void onLoadFinished(Loader<List<News>> loader, List<News> earthquakes) {
         // Hide loading indicator because the data has been loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
@@ -138,7 +137,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
         // Clear the adapter of previous earthquake data
         mAdapter.clear();
 
-        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+        // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (earthquakes != null && !earthquakes.isEmpty()) {
             mAdapter.addAll(earthquakes);
@@ -146,7 +145,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
     }
 
     @Override
-    public void onLoaderReset(Loader<List<Earthquake>> loader) {
+    public void onLoaderReset(Loader<List<News>> loader) {
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }

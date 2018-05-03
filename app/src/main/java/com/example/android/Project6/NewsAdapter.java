@@ -25,13 +25,13 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * An {@link EarthquakeAdapter} knows how to create a list item layout for each earthquake
- * in the data source (a list of {@link Earthquake} objects).
+ * An {@link NewsAdapter} knows how to create a list item layout for each article
+ * in the data source (a list of {@link News} objects).
  *
  * These list item layouts will be provided to an adapter view like ListView
  * to be displayed to the user.
  */
-public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
+public class NewsAdapter extends ArrayAdapter<News> {
 
 
     /**
@@ -41,12 +41,12 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
     private static final String LOCATION_SEPARATOR = " | ";
 
     /**
-     * Constructs a new {@link EarthquakeAdapter}.
+     * Constructs a new {@link NewsAdapter}.
      *
      * @param context of the app
      * @param earthquakes is the list of earthquakes, which is the data source of the adapter
      */
-    public EarthquakeAdapter(Context context, List<Earthquake> earthquakes) {
+    public NewsAdapter(Context context, List<News> earthquakes) {
         super(context, 0, earthquakes);
     }
 
@@ -65,20 +65,20 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         }
 
         // Find the earthquake at the given position in the list of earthquakes
-        Earthquake currentEarthquake = getItem(position);
+        News currentEarthquake = getItem(position);
 
         // Find the TextView with view ID magnitude
         TextView magnitudeView = (TextView) listItemView.findViewById(R.id.section);
         // Format the magnitude to show 1 decimal place
-        String formattedMagnitude = currentEarthquake.getMagnitude();
+        String formattedMagnitude = currentEarthquake.getSection();
         // Display the magnitude of the current earthquake in that TextView
         magnitudeView.setText(formattedMagnitude);
 
         // Find the TextView with view ID location
         TextView primaryLocationView = (TextView) listItemView.findViewById(R.id.article_topic);
-        // Get the original location string from the Earthquake object,
+        // Get the original location string from the News object,
         // which can be in the format of "5km N of Cairo, Egypt" or "Pacific-Antarctic Ridge".
-        String originalLocation = currentEarthquake.getLocation();
+        String originalLocation = currentEarthquake.getTitle();
 
 //        //jezeli nie zawiera | (location separator) wyswietlasz original caly, jak zawiera tylko czesc przed |
 //       // Check whether the originalLocation string contains the " of " text
@@ -103,7 +103,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);
         // Format the date string (i.e. "Mar 3, 1984")
-        String formattedDate = currentEarthquake.getTimeInMilliseconds();
+        String formattedDate = currentEarthquake.getTime();
         // Display the date of the current earthquake in that TextView
         dateView.setText(formattedDate);
 
