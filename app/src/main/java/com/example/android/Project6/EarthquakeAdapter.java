@@ -16,17 +16,12 @@
 package com.example.android.Project6;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +33,12 @@ import java.util.List;
  */
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
+
+    /**
+     * The part of the location string from the USGS service that we use to determine
+     * whether or not there is a location offset present ("5km N of Cairo, Egypt").
+     */
+    private static final String LOCATION_SEPARATOR = " | ";
 
     /**
      * Constructs a new {@link EarthquakeAdapter}.
@@ -67,16 +68,37 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         Earthquake currentEarthquake = getItem(position);
 
         // Find the TextView with view ID magnitude
-        TextView magnitudeView = (TextView) listItemView.findViewById(R.id.magnitude);
+        TextView magnitudeView = (TextView) listItemView.findViewById(R.id.section);
         // Format the magnitude to show 1 decimal place
         String formattedMagnitude = currentEarthquake.getMagnitude();
         // Display the magnitude of the current earthquake in that TextView
         magnitudeView.setText(formattedMagnitude);
 
-
+        // Find the TextView with view ID location
+        TextView primaryLocationView = (TextView) listItemView.findViewById(R.id.article_topic);
         // Get the original location string from the Earthquake object,
         // which can be in the format of "5km N of Cairo, Egypt" or "Pacific-Antarctic Ridge".
         String originalLocation = currentEarthquake.getLocation();
+
+//        //jezeli nie zawiera | (location separator) wyswietlasz original caly, jak zawiera tylko czesc przed |
+//       // Check whether the originalLocation string contains the " of " text
+//       if (originalLocation.contains(LOCATION_SEPARATOR)) {
+//           // Split the string into different parts (as an array of Strings)
+//           // based on the " of " text. We expect an array of 2 Strings, where
+//           // the first String will be "5km N" and the second String will be "Cairo, Egypt".
+//           String[] parts = originalLocation.split(LOCATION_SEPARATOR);
+//           // Location offset should be "5km N " + " of " --> "5km N of"
+//           originalLocation = parts[0];
+//       }
+//        } else {
+//            // Otherwise, there is no " of " text in the originalLocation string.
+//            // Hence, set the default location offset to say "Near the".
+//            // The primary location will be the full location string "Pacific-Antarctic Ridge".
+//            originalLocation = originalLocation;
+//        }
+
+        // Display the location of the current earthquake in that TextView
+        primaryLocationView.setText(originalLocation);
 
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);

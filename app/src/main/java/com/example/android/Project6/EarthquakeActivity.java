@@ -40,7 +40,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     //URL for earthquake data from the USGS dataset
     private static final String USGS_REQUEST_URL =
-            "https://content.guardianapis.com/search?q=debate%20AND%20economy&tag=politics/politics&from-date=2014-01-01&api-key=test";
+            "https://content.guardianapis.com/search?q=sport%20politics%20economy&from-date=2018-04-01&api-key=test";
 
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
