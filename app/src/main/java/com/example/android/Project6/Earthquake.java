@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.quakereport;
+package com.example.android.Project6;
 
 /**
  * An {@link Earthquake} object contains information related to a single earthquake.
@@ -21,13 +21,13 @@ package com.example.android.quakereport;
 public class Earthquake {
 
     /** Magnitude of the earthquake */
-    private double mMagnitude;
+    private String mMagnitude;
 
     /** Location of the earthquake */
     private String mLocation;
 
     /** Time of the earthquake */
-    private long mTimeInMilliseconds;
+    private String mTimeInMilliseconds;
 
     /** Website URL of the earthquake */
     private String mUrl;
@@ -41,7 +41,7 @@ public class Earthquake {
      *                           earthquake happened
      * @param url is the website URL to find more details about the earthquake
      */
-    public Earthquake(double magnitude, String location, long timeInMilliseconds, String url) {
+    public Earthquake(String magnitude, String location, String timeInMilliseconds, String url) {
         mMagnitude = magnitude;
         mLocation = location;
         mTimeInMilliseconds = timeInMilliseconds;
@@ -51,7 +51,7 @@ public class Earthquake {
     /**
      * Returns the magnitude of the earthquake.
      */
-    public double getMagnitude() {
+    public String getMagnitude() {
         return mMagnitude;
     }
 
@@ -65,7 +65,7 @@ public class Earthquake {
     /**
      * Returns the time of the earthquake.
      */
-    public long getTimeInMilliseconds() {
+    public String getTimeInMilliseconds() {
         return mTimeInMilliseconds;
     }
 

@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.quakereport;
+package com.example.android.Project6;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -41,7 +40,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     //URL for earthquake data from the USGS dataset
     private static final String USGS_REQUEST_URL =
-            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=6&limit=10";
+            "https://content.guardianapis.com/search?q=debate%20AND%20economy&tag=politics/politics&from-date=2014-01-01&api-key=test";
 
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
@@ -52,8 +51,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
     /** Adapter for the list of earthquakes */
     private EarthquakeAdapter mAdapter;
 
-    /** TextView that is displayed when the list is empty */
-    private TextView mEmptyStateTextView;
+//    /** TextView that is displayed when the list is empty */
+//    private TextView mEmptyStateTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +62,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
 
-        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
-        earthquakeListView.setEmptyView(mEmptyStateTextView);
+//        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+//        earthquakeListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of earthquakes as input
         mAdapter = new EarthquakeAdapter(this, new ArrayList<Earthquake>());
@@ -115,8 +114,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
             View loadingIndicator = findViewById(R.id.loading_indicator);
             loadingIndicator.setVisibility(View.GONE);
 
-            // Update empty state with no connection error message
-            mEmptyStateTextView.setText("No internet connection");
+//            // Update empty state with no connection error message
+//            mEmptyStateTextView.setText("No internet connection");
         }
 
     }
@@ -133,8 +132,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
-        // Set empty state text to display "No earthquakes found."
-        mEmptyStateTextView.setText("No earthquakes");
+//        // Set empty state text to display "No earthquakes found."
+//        mEmptyStateTextView.setText("No News");
 
         // Clear the adapter of previous earthquake data
         mAdapter.clear();

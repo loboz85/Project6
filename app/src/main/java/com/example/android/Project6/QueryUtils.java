@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.quakereport;
+package com.example.android.Project6;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -158,7 +158,9 @@ public final class QueryUtils {
      */
     private static List<Earthquake> extractFeatureFromJson(String earthquakeJSON) {
         // If the JSON string is empty or null, then return early.
+        System.out.println("Magda");
         if (TextUtils.isEmpty(earthquakeJSON)) {
+            System.out.println("Konrad");
             return null;
         }
 
@@ -175,7 +177,7 @@ public final class QueryUtils {
 
             // Extract the JSONArray associated with the key called "features",
             // which represents a list of features (or earthquakes).
-            JSONArray earthquakeArray = baseJsonResponse.getJSONArray("features");
+            JSONArray earthquakeArray = baseJsonResponse.getJSONObject("response").getJSONArray("results");
 
             // For each earthquake in the earthquakeArray, create an {@link Earthquake} object
             for (int i = 0; i < earthquakeArray.length(); i++) {
@@ -186,19 +188,19 @@ public final class QueryUtils {
                 // For a given earthquake, extract the JSONObject associated with the
                 // key called "properties", which represents a list of all properties
                 // for that earthquake.
-                JSONObject properties = currentEarthquake.getJSONObject("properties");
+                JSONObject properties = currentEarthquake;
 
                 // Extract the value for the key called "mag"
-                double magnitude = properties.getDouble("mag");
+                String magnitude = properties.getString("sectionName");
 
                 // Extract the value for the key called "place"
-                String location = properties.getString("place");
+                String location = properties.getString("webTitle");
 
                 // Extract the value for the key called "time"
-                long time = properties.getLong("time");
+                String time = properties.getString("webPublicationDate");
 
                 // Extract the value for the key called "url"
-                String url = properties.getString("url");
+                String url = properties.getString("webUrl");
 
                 // Create a new {@link Earthquake} object with the magnitude, location, time,
                 // and url from the JSON response.
