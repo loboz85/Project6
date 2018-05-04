@@ -34,11 +34,6 @@ import java.util.List;
 public class NewsAdapter extends ArrayAdapter<News> {
 
 
-    /**
-     * The part of the location string from the USGS service that we use to determine
-     * whether or not there is a location offset present ("5km N of Cairo, Egypt").
-     */
-    private static final String LOCATION_SEPARATOR = " | ";
 
     /**
      * Constructs a new {@link NewsAdapter}.
@@ -77,16 +72,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView titleView = (TextView) listItemView.findViewById(R.id.article_title);
         // Get the original topic
         String originalTitle = currentArticle.getTitle();
-
-//        //if originalTitle contains |show only text before | (location separator),
-//        //if  title doesn't include | (location separator) just show original text,
-//       if (originalLocation.contains(LOCATION_SEPARATOR)) {
-//           String[] parts = originalLocation.split(LOCATION_SEPARATOR);
-//           originalLocation = parts[0];
-//       }
-//        } else {
-//            originalLocation = originalLocation;
-//        }
 
         // Display title of the current article in that TextView
         titleView.setText(originalTitle);
