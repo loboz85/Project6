@@ -43,11 +43,11 @@ public class News {
     /**
      * Constructs a new {@link News} object.
      *
-     * @param section          is the magnitude (size) of the earthquake
-     * @param title           is the location where the earthquake happened
-     * @param time is the time in milliseconds (from the Epoch) when the
-     *                           earthquake happened
-     * @param url                is the website URL to find more details about the earthquake
+     * @param section is the magnitude (size) of the earthquake
+     * @param title   is the location where the earthquake happened
+     * @param time    is the time in milliseconds (from the Epoch) when the
+     *                earthquake happened
+     * @param url     is the website URL to find more details about the earthquake
      */
     public News(String section, String title, String time, String url) {
         mSection = section;

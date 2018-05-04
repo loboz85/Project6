@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * An {@link NewsAdapter} knows how to create a list item layout for each article
  * in the data source (a list of {@link News} objects).
- *
+ * <p>
  * These list item layouts will be provided to an adapter view like ListView
  * to be displayed to the user.
  */
@@ -44,15 +44,15 @@ public class NewsAdapter extends ArrayAdapter<News> {
      * Constructs a new {@link NewsAdapter}.
      *
      * @param context of the app
-     * @param earthquakes is the list of earthquakes, which is the data source of the adapter
+     * @param news    is the list of articles, which is the data source of the adapter
      */
-    public NewsAdapter(Context context, List<News> earthquakes) {
-        super(context, 0, earthquakes);
+    public NewsAdapter(Context context, List<News> news) {
+        super(context, 0, news);
     }
 
     /**
-     * Returns a list item view that displays information about the earthquake at the given position
-     * in the list of earthquakes.
+     * Returns a list item view that displays information about the article at the given position
+     * in the list of articles.
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -61,50 +61,41 @@ public class NewsAdapter extends ArrayAdapter<News> {
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.earthquake_list_item, parent, false);
+                    R.layout.article_list_item, parent, false);
         }
 
-        // Find the earthquake at the given position in the list of earthquakes
-        News currentEarthquake = getItem(position);
+        // Find the article at the given position in the list of articles
+        News currentArticle = getItem(position);
 
-        // Find the TextView with view ID magnitude
-        TextView magnitudeView = (TextView) listItemView.findViewById(R.id.section);
-        // Format the magnitude to show 1 decimal place
-        String formattedMagnitude = currentEarthquake.getSection();
-        // Display the magnitude of the current earthquake in that TextView
-        magnitudeView.setText(formattedMagnitude);
+        // Find the TextView with view ID section
+        TextView sectionView = (TextView) listItemView.findViewById(R.id.section);
+        String formattedSection = currentArticle.getSection();
+        // Display the article's section in that TextView
+        sectionView.setText(formattedSection);
 
-        // Find the TextView with view ID location
-        TextView primaryLocationView = (TextView) listItemView.findViewById(R.id.article_topic);
-        // Get the original location string from the News object,
-        // which can be in the format of "5km N of Cairo, Egypt" or "Pacific-Antarctic Ridge".
-        String originalLocation = currentEarthquake.getTitle();
+        // Find the TextView with view ID topic
+        TextView titleView = (TextView) listItemView.findViewById(R.id.article_title);
+        // Get the original topic
+        String originalTitle = currentArticle.getTitle();
 
-//        //jezeli nie zawiera | (location separator) wyswietlasz original caly, jak zawiera tylko czesc przed |
-//       // Check whether the originalLocation string contains the " of " text
+//        //if originalTitle contains |show only text before | (location separator),
+//        //if  title doesn't include | (location separator) just show original text,
 //       if (originalLocation.contains(LOCATION_SEPARATOR)) {
-//           // Split the string into different parts (as an array of Strings)
-//           // based on the " of " text. We expect an array of 2 Strings, where
-//           // the first String will be "5km N" and the second String will be "Cairo, Egypt".
 //           String[] parts = originalLocation.split(LOCATION_SEPARATOR);
-//           // Location offset should be "5km N " + " of " --> "5km N of"
 //           originalLocation = parts[0];
 //       }
 //        } else {
-//            // Otherwise, there is no " of " text in the originalLocation string.
-//            // Hence, set the default location offset to say "Near the".
-//            // The primary location will be the full location string "Pacific-Antarctic Ridge".
 //            originalLocation = originalLocation;
 //        }
 
-        // Display the location of the current earthquake in that TextView
-        primaryLocationView.setText(originalLocation);
+        // Display title of the current article in that TextView
+        titleView.setText(originalTitle);
 
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);
-        // Format the date string (i.e. "Mar 3, 1984")
-        String formattedDate = currentEarthquake.getTime();
-        // Display the date of the current earthquake in that TextView
+        // Format the date string (i.e. "Jan 8, 2017")
+        String formattedDate = currentArticle.getTime();
+        // Display the date of the current article in that TextView
         dateView.setText(formattedDate);
 
 

@@ -4,29 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingEnd="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingStart="16dp">
+    android:paddingEnd="@dimen/margin"
+    android:paddingLeft="@dimen/margin"
+    android:paddingRight="@dimen/margin"
+    android:paddingStart="@dimen/margin">
 
     <TextView
-        android:id="@+id/article_topic"
+        android:id="@+id/article_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
         android:ellipsize="end"
         android:maxLines="4"
-        android:textColor="@color/textColorEarthquakeLocation"
-        android:textSize="16sp"
+        android:textColor="@color/textColorArticleTitle"
+        android:textSize="@dimen/margin"
         android:textStyle="bold"
-        tools:text="Long article name, should have at least 2 lines" />
+        tools:text="@string/title_text" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/margin"
         android:orientation="horizontal">
 
 
@@ -38,14 +38,14 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:textColor="@color/red"
-            android:textSize="12sp"
+            android:textSize="@dimen/text_size"
             tools:text="Section" />
 
         <View
-            android:layout_width="1dp"
+            android:layout_width="@dimen/width_view"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginLeft="@dimen/margin_view"
+            android:layout_marginRight="@dimen/margin_view"
             android:background="@color/grey" />
 
         <TextView
@@ -54,8 +54,8 @@
             android:layout_height="wrap_content"
             android:maxLength="10"
             android:textColor="@color/grey"
-            android:textSize="12sp"
-            tools:text="Jan 6, 2018" />
+            android:textSize="@dimen/text_size"
+            tools:text="@string/date_text" />
 
     </LinearLayout>
 
