@@ -38,6 +38,8 @@ import java.util.List;
  */
 public final class NewsUtils {
 
+    private static final String LOCATION_SEPARATOR = "\\|";
+
     /**
      * Tag for the log messages
      */
@@ -108,7 +110,7 @@ public final class NewsUtils {
 
             // If the request was successful (response code 200),
             // then read the input stream and parse the response.
-            if (urlConnection.getResponseCode() == 200) {
+            if (urlConnection.getResponseCode() == urlConnection.HTTP_OK) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
@@ -197,9 +199,24 @@ public final class NewsUtils {
                 // Extract the value for the key called "webUrl"
                 String url = results.getString("webUrl");
 
-                // Create a new {@link News} object with the section, title, time,
+                // Extract the value for the key called "webTitle"
+                String author = "";
+
+
+
+                //if title contains "|" show title and author
+                //if  title doesn't include "|" show only title
+
+                    String[] parts = title.split(LOCATION_SEPARATOR);
+                    title = parts[0];
+
+                    if(parts.length>1 && parts[1]!=null){
+                    author = parts[1];
+                }
+
+                // Create a new {@link News} object with the section, title, time, author
                 // and url from the JSON response.
-                News news = new News(section, title, time, url);
+                News news = new News(section, title, time, url, author);
 
                 // Add the new {@link News} to the list of earthquakes.
                 articles.add(news);
