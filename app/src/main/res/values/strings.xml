@@ -16,5 +16,10 @@
     <string name="app_name">News App</string>
     <string name="title_text">Long article name, should have at 4 lines</string>
     <string name="date_text">Jan 6, 2018</string>
+    <string name="author_text">Barry Williams</string>
+    <string name="no_internet">No internet connection. Please activate your wifi and restart app. </string>
+    <string name="no_news">Sorry, there is problem with downloading data from Guardian portal.
+    Close your app and try again later.</string>
+
 
 </resources>

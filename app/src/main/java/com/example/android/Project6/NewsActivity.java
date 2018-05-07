@@ -118,7 +118,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
             loadingIndicator.setVisibility(View.GONE);
 
             // Update empty state with no connection error message
-            mEmptyStateTextView.setText("No internet connection");
+            mEmptyStateTextView.setText(R.string.no_internet);
         }
 
     }
@@ -136,7 +136,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         loadingIndicator.setVisibility(View.GONE);
 
         // Set empty state text to display "No news found."
-        mEmptyStateTextView.setText("No News");
+        mEmptyStateTextView.setText(R.string.no_news);
 
         // Clear the adapter of previous article data
         mAdapter.clear();
