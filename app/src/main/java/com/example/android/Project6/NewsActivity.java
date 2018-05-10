@@ -152,7 +152,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     Uri.Builder uriBuilder = baseUri.buildUpon();
 
 
-//    uriBuilder.appendQueryParameter("limit", "10");
     uriBuilder.appendQueryParameter("q", word);
     uriBuilder.appendQueryParameter("order-by", orderBy);
     uriBuilder.appendQueryParameter("api-key", "test");
