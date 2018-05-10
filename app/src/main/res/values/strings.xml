@@ -20,6 +20,29 @@
     <string name="no_internet">No internet connection. Please activate your wifi and restart app. </string>
     <string name="no_news">Sorry, there is problem with downloading data from Guardian portal.
     Close your app and try again later.</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Settings</string>
 
+    <string name="settings_searchby_word">Search by word</string>
+    <string name="settings_word_key" translatable="false">word</string>
+    <string name="settings_word_default" translatable="false">0</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_relevance_value</string>
+
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_relevance_label">Relevance</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_most_recent_label">Most Recent</string>
+    <string name="settings_order_by_most_recent_value" translatable="false">time</string>
+
+    <!-- Label for order-by oldest option [CHAR LIMIT=20] --> do zmiany
+    <string name="settings_order_by_oldest_label">Oldest</string>
+    <string name="settings_order_by_oldest_value" translatable="false">time</string>
 
 </resources>
