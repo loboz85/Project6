@@ -18,7 +18,7 @@
         android:ellipsize="end"
         android:maxLines="4"
         android:textColor="@color/textColorArticleTitle"
-        android:textSize="@dimen/margin"
+        android:textSize="@dimen/title_text_size"
         android:textStyle="bold"
         tools:text="@string/title_text" />
 
