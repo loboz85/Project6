@@ -39,10 +39,10 @@
 
     <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
     <string name="settings_order_by_most_recent_label">Most Recent</string>
-    <string name="settings_order_by_most_recent_value" translatable="false">time</string>
+    <string name="settings_order_by_most_recent_value" translatable="false">newest</string>
 
-    <!-- Label for order-by oldest option [CHAR LIMIT=20] --> do zmiany
+    <!-- Label for order-by most recent option [CHAR LIMIT=20]-->
     <string name="settings_order_by_oldest_label">Oldest</string>
-    <string name="settings_order_by_oldest_value" translatable="false">time</string>
+    <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
 
 </resources>

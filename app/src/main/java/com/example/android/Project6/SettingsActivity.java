@@ -6,6 +6,7 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.preference.ListPreference;
 
 
 public class SettingsActivity extends AppCompatActivity {
@@ -25,12 +26,24 @@ public class SettingsActivity extends AppCompatActivity {
 
             Preference word = findPreference(getString(R.string.settings_word_key));
             bindPreferenceSummaryToValue(word);
+
+            Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
+            bindPreferenceSummaryToValue(orderBy);
         }
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
-            preference.setSummary(stringValue);
+                    String stringValue = value.toString();
+            if (preference instanceof android.preference.ListPreference) {
+                android.preference.ListPreference listPreference = (android.preference.ListPreference) preference;
+                int prefIndex = listPreference.findIndexOfValue(stringValue);
+                if (prefIndex >= 0) {
+                    CharSequence[] labels = listPreference.getEntries();
+                    preference.setSummary(labels[prefIndex]);
+                }
+            } else {
+                preference.setSummary(stringValue);
+            }
             return true;
         }
 

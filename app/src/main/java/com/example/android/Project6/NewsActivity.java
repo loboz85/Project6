@@ -138,10 +138,11 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     String word = sharedPrefs.getString(
             getString(R.string.settings_word_key),
             getString(R.string.settings_word_default));
-
+    System.out.println("Konrad " + getString(R.string.settings_order_by_key) + getString(R.string.settings_order_by_default));
       String orderBy  = sharedPrefs.getString(
                 getString(R.string.settings_order_by_key),
                 getString(R.string.settings_order_by_default)
+
         );
 
    // parse breaks apart the URI string that's passed into its parameter
@@ -153,11 +154,11 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
 //    uriBuilder.appendQueryParameter("limit", "10");
     uriBuilder.appendQueryParameter("q", word);
-    uriBuilder.appendQueryParameter("orderby", orderBy);
+    uriBuilder.appendQueryParameter("order-by", orderBy);
     uriBuilder.appendQueryParameter("api-key", "test");
 
     System.out.println("Konrad " + uriBuilder.toString());
-    // Return the completed uri `http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=10&minmag=minMagnitude&orderby=time
+    // Return the completed uri `https://content.guardianapis.com/search?q=word&orderby=newest
     return new NewsLoader(this, uriBuilder.toString());
 
     }
